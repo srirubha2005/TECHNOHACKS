@@ -1,0 +1,48 @@
+#include <iostream>
+#include <cstdlib> // for rand() and srand() functions
+#include <ctime>   // for time() function
+
+using namespace std;
+
+int main() {
+    // Seed the random number generator
+    srand(time(0));
+
+    // Variables to store user and computer choices
+    char userChoice, computerChoice;
+
+    // Display the menu and prompt user to choose
+    cout << "Welcome to Rock, Paper, Scissors!\n";
+    cout << "Enter 'r' for Rock, 'p' for Paper, or 's' for Scissors: ";
+    cin >> userChoice;
+
+    // Generate computer's choice
+    int randomNumber = rand() % 3;
+    switch(randomNumber) {
+        case 0:
+            computerChoice = 'r';
+            cout << "Computer chose Rock.\n";
+            break;
+        case 1:
+            computerChoice = 'p';
+            cout << "Computer chose Paper.\n";
+            break;
+        case 2:
+            computerChoice = 's';
+            cout << "Computer chose Scissors.\n";
+            break;
+    }
+
+    // Determine the winner
+    if (userChoice == computerChoice) {
+        cout << "It's a tie!\n";
+    } else if ((userChoice == 'r' && computerChoice == 's') ||
+               (userChoice == 'p' && computerChoice == 'r') ||
+               (userChoice == 's' && computerChoice == 'p')) {
+        cout << "Congratulations! You win!\n";
+    } else {
+        cout << "Sorry! Computer wins!\n";
+    }
+
+    return 0;
+}
